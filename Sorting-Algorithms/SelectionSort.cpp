@@ -3,9 +3,8 @@
 
 using namespace std;
 
-vector<int> SelectionSort(vector<int> arr, int start = 0);
+vector<int> SelectionSort(vector<int> arr);
 void PrintVector(vector<int> arr);
-int FindMinIndex(vector<int> arr, int start);
 
 int main(){
     int n,k;
@@ -30,25 +29,23 @@ void PrintVector(vector<int> arr){
     cout << endl;
 }
 
-int FindMinIndex(vector<int> arr, int start){
-    int min_idx = start;
-    for(int i = start+1; i < arr.size(); i++){
-        if(arr[i] < arr[min_idx]){
-            min_idx = i;
-        }
-    }
-    return min_idx;
-}
 
-vector<int> SelectionSort(vector<int> arr, int start){
-    if(start < arr.size()){
-        int min_idx = FindMinIndex(arr, start);
-        if(min_idx != start){
-            int temp = arr[start];
-            arr[start] = arr[min_idx];
-            arr[min_idx] = temp;
+vector<int> SelectionSort(vector<int> arr){
+    // for each item in array
+    for(int i = 0; i < arr.size()-1; i++){
+        // find the idex of minimum value from the rest of the array
+        int min_index = i;
+        for(int j = i+1; j < arr.size(); j++){
+            if(arr[j] < arr[min_index]){
+                min_index = j;
+            }
         }
-        arr = SelectionSort(arr, start+1);
+        // swap the minimum with the current
+        if(min_index != i){
+            int temp = arr[i];
+            arr[i] = arr[min_index];
+            arr[min_index] = temp;
+        }
     }
     return arr;
 }
