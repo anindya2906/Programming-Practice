@@ -33,7 +33,7 @@ void PrintVector(vector<int> arr){
 vector<int> SelectionSort(vector<int> arr){
     // for each item in array
     for(int i = 0; i < arr.size()-1; i++){
-        // find the idex of minimum value from the rest of the array
+        // find the index of minimum value from the rest of the array
         int min_index = i;
         for(int j = i+1; j < arr.size(); j++){
             if(arr[j] < arr[min_index]){
